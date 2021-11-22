@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Pumpkin-master" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/menu" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/merchandise" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/rank" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/shopping" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/start" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pumpkin-master/user" charset="UTF-8" />
+  </component>
+</project>

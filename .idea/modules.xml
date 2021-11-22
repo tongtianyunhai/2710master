@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/2710.iml" filepath="$PROJECT_DIR$/.idea/2710.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/Pumpkin.iml" filepath="$PROJECT_DIR$/Pumpkin-master/Pumpkin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/common/common.iml" filepath="$PROJECT_DIR$/Pumpkin-master/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/games/games.iml" filepath="$PROJECT_DIR$/Pumpkin-master/games/games.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/library/library.iml" filepath="$PROJECT_DIR$/Pumpkin-master/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/menu/menu.iml" filepath="$PROJECT_DIR$/Pumpkin-master/menu/menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/merchandise/merchandise.iml" filepath="$PROJECT_DIR$/Pumpkin-master/merchandise/merchandise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/order/order.iml" filepath="$PROJECT_DIR$/Pumpkin-master/order/order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/permission/permission.iml" filepath="$PROJECT_DIR$/Pumpkin-master/permission/permission.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/rank/rank.iml" filepath="$PROJECT_DIR$/Pumpkin-master/rank/rank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/shopping/shopping.iml" filepath="$PROJECT_DIR$/Pumpkin-master/shopping/shopping.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/start/start.iml" filepath="$PROJECT_DIR$/Pumpkin-master/start/start.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/user/user.iml" filepath="$PROJECT_DIR$/Pumpkin-master/user/user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Pumpkin-master/version/version.iml" filepath="$PROJECT_DIR$/Pumpkin-master/version/version.iml" />
+    </modules>
+  </component>
+</project>

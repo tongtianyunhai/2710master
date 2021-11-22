@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/pumpkin?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+
+logging:
+  level:
+    com:
+      javasm:
+        salesupply: debug
+  file:
+    name: E://project.log
+
+mybatis-plus:
+  configuration:
+    # （camel case）
+    map-underscore-to-camel-case: true
