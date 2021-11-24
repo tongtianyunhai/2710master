@@ -4,7 +4,7 @@ import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.domain.criteria.MBrandCriteria;
 import com.database.pumpkin.domain.entity.MSort;
 import com.database.pumpkin.service.Base.BaseService;
-import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

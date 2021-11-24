@@ -2,13 +2,20 @@ package com.database.pumpkin.controller;
 
 
 import com.database.pumpkin.common.http.AxiosResult;
+import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.controller.base.BaseController;
+import com.database.pumpkin.domain.entity.PCustomer;
 import com.database.pumpkin.domain.entity.PUser;
+import com.database.pumpkin.domain.vo.PCustomerVo;
 import com.database.pumpkin.service.IPUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -19,7 +26,6 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-10-11
  */
 @Api(value = "adminController", description = "用户管理")
-
 @RequestMapping("puser")
 @RestController
 public class PUserController extends BaseController {
@@ -27,13 +33,30 @@ public class PUserController extends BaseController {
     @Autowired
     private IPUserService puserService;
 
-    @ApiOperation(value = "查询用户", notes = "查询所有用户")
+    @ApiOperation(value = "查询登录用户", notes = "验证用户登录密码")
     @PostMapping  ("selectUserByName")
     public AxiosResult<PUser> login(@RequestBody PUser puser) {
         PUser res = puserService.findUser(puser.getUserName());
-        if (res.getPassWord().equals(puser.getPassWord())) {
-            return AxiosResult.success(puser);
+        if (res.getPassWord().equals(puser.getPassWord())&&res.getIsvaild()!=0) {
+            return AxiosResult.success(res);
         }
         return AxiosResult.error();
     }
+
+    @ApiOperation(value = "CreateNewAccount", notes = "CreateNewAccount")
+    @PostMapping  ("save")
+    public AxiosResult<Integer> save(@RequestBody PUser puser) {
+        int save = puserService.save(puser);
+        return toAxiosResult(save);
+    }
+
+    @GetMapping("searchCustomerById/{uid}")
+    @ApiOperation(value = "searchById",notes="searchCustomerById")
+    public AxiosResult<List<PCustomerVo>> searchPageByCriteria(@PathVariable Integer uid){
+        PCustomerVo pCustomerVo=puserService.selectUserByUid(uid);
+        List<PCustomerVo>list= new ArrayList<>();
+        list.add(pCustomerVo);
+        return AxiosResult.success(list);
+    }
+
 }

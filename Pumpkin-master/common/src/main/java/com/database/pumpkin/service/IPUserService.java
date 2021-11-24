@@ -2,6 +2,8 @@ package com.database.pumpkin.service;
 
 
 import com.database.pumpkin.domain.entity.PUser;
+import com.database.pumpkin.domain.vo.PCustomerVo;
+import com.database.pumpkin.service.Base.BaseService;
 
 /**
  * <p>
@@ -11,6 +13,7 @@ import com.database.pumpkin.domain.entity.PUser;
  * @author whl
  * @since 2021-10-11
  */
-public interface IPUserService  {
+public interface IPUserService  extends BaseService<PUser> {
     PUser findUser(String userName);
+    PCustomerVo selectUserByUid(Integer uid);
 }

@@ -1,8 +1,18 @@
 package com.database.pumpkin.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.database.pumpkin.common.http.AxiosResult;
+
+
+import com.database.pumpkin.controller.base.BaseController;
+import com.database.pumpkin.domain.entity.PCustomer;
+import com.database.pumpkin.service.IPCustomerService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,7 +23,26 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-10-11
  */
 @RestController
-@RequestMapping("/customer/p-customer")
-public class PCustomerController {
+@RequestMapping("pcustomer")
+@Api(value="PCustomer",description = "PCustomerMangament")
+public class PCustomerController extends BaseController {
+
+    @Autowired
+    private IPCustomerService ipCustomerService;
+
+
+    @ApiOperation(value = "updateCustomer", notes = "updateCustomer")
+    @PutMapping("update")
+    public AxiosResult<Integer> update(@RequestBody PCustomer pCustomer){
+        int update = ipCustomerService.updateById(pCustomer);
+        return toAxiosResult(update);
+    }
+    @GetMapping("sortList")
+    @ApiOperation(value = "searchMerchandiseSort",notes="searchAll")
+    public AxiosResult<List<PCustomer>> findAll(){
+        List<PCustomer> list=ipCustomerService.list();
+        return AxiosResult.success(list);
+    }
+
 
 }

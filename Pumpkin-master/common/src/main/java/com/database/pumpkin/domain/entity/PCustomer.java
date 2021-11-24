@@ -28,15 +28,13 @@ public class PCustomer implements Serializable {
 
     private Integer roleId;
 
-    private String username;
-
     private Date birthday;
 
-    private String  nickname;
+    private Integer userId;
 
     private String country;
 
-    private Long balance;
+    private Double balance;
 
     private String city;
 
@@ -46,5 +44,6 @@ public class PCustomer implements Serializable {
 
     private String street;
 
+    private Integer gender;
 
 }

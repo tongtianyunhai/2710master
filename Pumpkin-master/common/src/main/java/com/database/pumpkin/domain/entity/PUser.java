@@ -36,7 +36,7 @@ public class PUser implements Serializable {
 
     private Date loginTime;
 
-    private Integer isvalid;
+    private Integer isvaild;
 
     private String updateBy;
 
@@ -48,7 +48,9 @@ public class PUser implements Serializable {
 
     private Integer menuId;
 
-    private String pre1;
+    private String preOne;
+
+    private String preTwo;
 
     private Integer star;
 
@@ -56,6 +58,5 @@ public class PUser implements Serializable {
 
     private String nickName;
 
-    private String gender;
 
 }

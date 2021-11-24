@@ -3,6 +3,7 @@ package com.database.pumpkin.controller;
 
 import com.database.pumpkin.common.http.AxiosResult;
 import com.database.pumpkin.common.page.PageResult;
+import com.database.pumpkin.controller.base.BaseController;
 import com.database.pumpkin.domain.criteria.MMerchandiseCriteria;
 import com.database.pumpkin.domain.vo.MMerchandiseVo;
 import com.database.pumpkin.service.IMMerchandiseService;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/merchandise")
 @Api(value="MerchandiseController",description = "merchandiseMangament")
-public class MMerchandiseController {
+public class MMerchandiseController extends BaseController {
     @Autowired
     private IMMerchandiseService imMerchandiseService;
 

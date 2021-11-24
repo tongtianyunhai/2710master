@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.database.pumpkin.mapper.PCustomerMapper">
-    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.PUser">
-        <!--@Table p_user-->
-        <result property="uid" column="uid" jdbcType="INTEGER"/>
-        <result property="userName" column="userName" jdbcType="VARCHAR"/>
-        <result property="passWord" column="passWord" jdbcType="VARCHAR"/>
+    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.PCustomer">
+        <result property="cid" column="cid" jdbcType="INTEGER"/>
         <result property="roleId" column="role_id" jdbcType="INTEGER"/>
-        <result property="isvalid" column="isvalid" jdbcType="INTEGER"/>
-        <result property="loginTime" column="login_time" jdbcType="LocalDateTime"/>
-        <result property="pre1" column="pre_1" jdbcType="VARCHAR"/>
-        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
-        <result property="updateTime" column="update_time" jdbcType="LocalDateTime"/>
-        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
-        <result property="createTime" column="create_time" jdbcType="LocalDateTime"/>
-        <result property="menuId" column="menu_id" jdbcType="INTEGER"/>
-        <result property="updateBy" column="star" jdbcType="INTEGER"/>
-        <result property="createTime" column="email" jdbcType="VARCHAR"/>
-        <result property="updateTime" column="nickName" jdbcType="VARCHAR"/>
-        <result property="updateTime" column="gender" jdbcType="VARCHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
+        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+        <result property="country" column="country" jdbcType="VARCHAR"/>
+        <result property="balance" column="balance" jdbcType="DOUBLE"/>
+        <result property="city" column="city" jdbcType="VARCHAR"/>
+        <result property="zipcode" column="zipcode" jdbcType="INTEGER"/>
+        <result property="state" column="state" jdbcType="VARCHAR"/>
+        <result property="street" column="street" jdbcType="VARCHAR"/>
     </resultMap>
 
 
-    <insert id="insert" keyProperty="uid" useGeneratedKeys="true">
-        insert into pumpkin.p_user(userName, passWord, isvalid, email)
-        values (#{userName}, #{passWord}, #{isvalid}, #{email})
-    </insert>
+
+
+
+    <!--<update id="selectUserByUid">-->
+        <!--update p_user p1,p_customer p2-->
+        <!--<set>-->
+            <!--p1.userName={#userName},p1.email={#email},p1.nick_name={#nickName},p2.birthday={#birthday},p2.country={#country},p2.balance={#balance},p2.city={#city},p2.zipcode={#userName},p2.street={#userName},p2.state={#userName},p2.url={#userName},p2.gender={#userName}-->
+        <!--</set>-->
+        <!--where sid = #{sid}-->
+  <!--</update>-->
 </mapper>

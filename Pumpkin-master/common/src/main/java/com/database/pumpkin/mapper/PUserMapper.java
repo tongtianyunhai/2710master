@@ -2,6 +2,8 @@ package com.database.pumpkin.mapper;
 
 
 import com.database.pumpkin.domain.entity.PUser;
+import com.database.pumpkin.domain.vo.PCustomerVo;
+import com.database.pumpkin.mapper.base.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -16,7 +18,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 
-public interface PUserMapper  {
+public interface PUserMapper extends MyMapper<PUser> {
     PUser selectUserByName(@Param("userName") String userName);
+    PCustomerVo selectUserByUid(@Param("uid") Integer uid);
 
 }
