@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.pumpkin.mapper.MSortMapper">
+    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.MSort">
+        <!--@Table m_sort-->
+        <result property="sid" column="sid" jdbcType="INTEGER"/>
+        <result property="sortName" column="sort_name" jdbcType="VARCHAR"/>
+        <result property="isparent" column="isparent" jdbcType="INTEGER"/>
+        <result property="parentid" column="parentid" jdbcType="INTEGER"/>
+        <result property="sortBn" column="sort_bn" jdbcType="VARCHAR"/>
+        <result property="isvalid" column="isvalid" jdbcType="INTEGER"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
+        <result property="preOne" column="pre_one" jdbcType="VARCHAR"/>
+        <result property="preTwo" column="pre_one" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectsort" resultMap="TreeData">
+        select m1.sort_name as typename,m1.isparent as typeid,m2.sort_name as children,m2.sid as childrenid from m_sort m1,m_sort m2
+        <where>
+            m1.isparent=m2.parentid and m1.parentid=0
+        </where>
+    </select>
+
+    <resultMap id="TreeData" type="com.database.pumpkin.domain.vo.MSortVo">
+        <id property="typeid" column="typeid"></id>
+        <result property="typename" column="typename"></result>
+        <collection property="children" ofType="com.database.pumpkin.domain.vo.MBrandVo" >
+        <id property="typeid" column="childrenid"></id>
+        <result property="typename" column="children"></result>
+        </collection>
+    </resultMap>
+</mapper>

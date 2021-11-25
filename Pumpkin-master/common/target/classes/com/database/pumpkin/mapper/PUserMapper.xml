@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.pumpkin.mapper.PUserMapper">
+    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.PUser">
+        <result property="uid" column="uid" jdbcType="INTEGER"/>
+        <result property="userName" column="userName" jdbcType="VARCHAR"/>
+        <result property="passWord" column="passWord" jdbcType="VARCHAR"/>
+        <result property="isvaild" column="isvaild" jdbcType="INTEGER"/>
+        <result property="loginTime" column="login_time" jdbcType="TIMESTAMP"/>
+        <result property="preOne" column="pre_one" jdbcType="VARCHAR"/>
+        <result property="preTwo" column="pre_two" jdbcType="VARCHAR"/>
+        <result property="updateBy" column="update_by" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="menuId" column="menu_id" jdbcType="INTEGER"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="star" column="star" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectUserByName" resultType="com.database.pumpkin.domain.entity.PUser">
+    select * from p_user where username = #{userName}
+  </select>
+
+
+    <select id="selectUserByUid" resultType="com.database.pumpkin.domain.vo.PCustomerVo">
+   select p1.userName,p1.email,p1.star,p1.nick_name,p2.birthday,p2.country,p2.balance,p2.city,p2.zipcode,p2.street,p2.state,p2.url,p2.gender from p_user p1,p_customer p2 where uid = #{uid} and
+    p2.userId=p1.uid
+  </select>
+
+
+</mapper>

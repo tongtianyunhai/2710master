@@ -7,18 +7,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="merchandise" />
+        <module name="library" />
         <module name="common" />
         <module name="games" />
-        <module name="library" />
-        <module name="menu" />
-        <module name="merchandise" />
-        <module name="order" />
-        <module name="permission" />
-        <module name="rank" />
-        <module name="shopping" />
         <module name="start" />
+        <module name="rank" />
+        <module name="permission" />
+        <module name="menu" />
         <module name="user" />
         <module name="version" />
+        <module name="shopping" />
+      </profile>
+      <profile name="Annotation profile for Pumpkin" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="order" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -36,5 +41,18 @@
       <module name="user" target="1.8" />
       <module name="version" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Pumpkin" options="" />
+      <module name="common" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="menu" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="merchandise" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="order" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="rank" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="shopping" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="start" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+      <module name="user" options="-parameters -bootclasspath $USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\rt.jar;$USER_HOME$/.jdks/corretto-1.8.0_302/jre\lib\jce.jar" />
+    </option>
   </component>
 </project>
