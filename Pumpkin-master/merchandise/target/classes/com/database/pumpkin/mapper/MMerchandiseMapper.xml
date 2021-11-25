@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.pumpkin.mapper.MMerchandiseMapper">
+
+    <select id="selectByParams" resultType="com.database.pumpkin.domain.vo.MMerchandiseVo">
+        select m1.m_name,m2.sort_name as brandName,m1.m_price,m1.m_isvaild,m1.m_bn,m1.m_color,m1.m_size,m1.url as merichandisePicture,m2.url as sortPicture, m3.sort_name as sortName,m1.m_sort
+        from m_merchandise m1,m_sort m2,m_sort m3
+        <where>
+            m1.m_sort=m2.sid and m2.parentid=m3.isparent
+            <!-- searchbyBrandName  -->
+            <if test="mName != null and mName != ''">
+                and m_name like concat('%',#{mName},'%')
+            </if>
+            <if test="mSort != null and mSort != ''">
+                and m_sort like concat('%',#{mSort},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--delete brand by id-->
+    <update id="deleteByNameAndmBn">
+        update m_merchandise
+        <set>
+            m_isvaild =0,
+        </set>
+        where m_name = #{mName} and m_bn = #{mBn}
+    </update>
+
+
+
+</mapper>

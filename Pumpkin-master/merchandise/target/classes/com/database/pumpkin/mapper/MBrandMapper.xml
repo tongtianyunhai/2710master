@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.pumpkin.mapper.MBrandMapper">
+    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.MSort">
+    <result property="sid" column="sid" jdbcType="INTEGER"/>
+    <result property="sortName" column="sort_name" jdbcType="VARCHAR"/>
+    <result property="isparent" column="isparent" jdbcType="INTEGER"/>
+    <result property="parentid" column="parentid" jdbcType="INTEGER"/>
+    <result property="sortBn" column="sort_bn" jdbcType="VARCHAR"/>
+    <result property="isvaild" column="isvaild" jdbcType="INTEGER"/>
+    <result property="url" column="url" jdbcType="VARCHAR"/>
+    <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    <result property="createBy" column="create_by" jdbcType="VARCHAR"/>
+    <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    <result property="updateBy" column="update_by" jdbcType="INTEGER"/>
+    <result property="preOne" column="pre_one" jdbcType="VARCHAR"/>
+    <result property="preTwo" column="pre_one" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+
+    <select id="selectByParams" resultType="com.database.pumpkin.domain.entity.MSort">
+        select sid,sort_name,sort_bn,url,parentid,isvalid
+        from
+        m_sort
+        <where>
+            isparent=0
+            <!-- searchbyBrandName  -->
+            <if test="sortName != null and sortName != ''">
+                and sort_name like concat('%',#{sortName},'%')
+            </if>
+        </where>
+    </select>
+
+    <select id="queryById" resultType="com.database.pumpkin.domain.entity.MSort">
+        select sid,sort_name,sort_bn,url,parentid,isvalid
+        from
+        m_sort
+        <where>
+            sid = #{sid}
+        </where>
+    </select>
+
+
+    <select id="selectType" resultType="com.database.pumpkin.domain.entity.MSort">
+        select isparent,sort_name
+        from m_sort
+        <where>
+            parentid=0;
+        </where>
+    </select>
+
+<!--delete brand by id-->
+    <update id="deleteById">
+        update m_sort
+        <set>
+               isvalid =0,
+        </set>
+        where sid = #{sid}
+    </update>
+
+    <!--&lt;!&ndash;update brand by id&ndash;&gt;-->
+    <!--<update id="updateById">-->
+        <!--update m_sort-->
+        <!--<set>-->
+            <!--sort_name =#{sortName},parentid=#{parentid},sort_bn=#{sortBn},sort_color=#{sortColor},sort_size=#{sortSize},url=#{url},update_by=#{updateBy},update_time=#{updateTime}-->
+        <!--</set>-->
+        <!--where sid = #{sid}-->
+    <!--</update>-->
+
+
+
+</mapper>
