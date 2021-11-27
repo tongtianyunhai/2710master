@@ -70,8 +70,8 @@ public class MMerchandiseServiceImpl extends BaseServiceImpl<MMerchandise> imple
     }
 
     @Override
-    public Integer updateByNameAndmBn(MMerchandise mMerchandise) {
-        return mMerchandiseMapper.updateByNameAndmBn(mMerchandise);
+    public Integer updateByNameAndmBn(MMerchandiseVo mMerchandiseVo) {
+        return mMerchandiseMapper.updateByNameAndmBn(mMerchandiseVo);
     }
 
 

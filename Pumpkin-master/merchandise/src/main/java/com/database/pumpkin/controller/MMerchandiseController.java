@@ -50,8 +50,8 @@ public class MMerchandiseController extends BaseController {
     }
     @PutMapping("update")
     @ApiOperation(value = "updateBrand",notes="update")
-    public AxiosResult<Integer> update(@RequestBody MMerchandise mMerchandise){
-        int update = this.imMerchandiseService.updateByNameAndmBn(mMerchandise);
+    public AxiosResult<Integer> update(@RequestBody MMerchandiseVo mMerchandiseVo){
+        int update = this.imMerchandiseService.updateByNameAndmBn(mMerchandiseVo);
         return toAxiosResult(update);
     }
 

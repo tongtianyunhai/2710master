@@ -52,4 +52,8 @@ public class MMerchandiseVo implements Serializable {
 
     private String sortPicture;
 
+    private Integer amount;
+
+    private String url;
+
 }
