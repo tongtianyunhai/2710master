@@ -35,7 +35,6 @@ public class MMerchandiseController extends BaseController {
         PageResult<MMerchandiseVo> list=imMerchandiseService.searchPageByCriteria(mMerchandiseCriteria);
         return AxiosResult.success(list);
     }
-
     @PutMapping("delete")
     @ApiOperation(value = "deleteMerchandise",notes="fakedelete")
     public AxiosResult<Integer> deleteMerchandise(@RequestBody MMerchandiseVo mMerchandiseVo){
@@ -55,4 +54,5 @@ public class MMerchandiseController extends BaseController {
         int update = this.imMerchandiseService.updateByNameAndmBn(mMerchandise);
         return toAxiosResult(update);
     }
+
 }

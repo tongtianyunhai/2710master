@@ -15,4 +15,5 @@ import lombok.Data;
 public class MMerchandiseCriteria extends BaseQueryCriteria {
     private  String mName;
     private Integer mSort;
+    private String mBn;
 }
