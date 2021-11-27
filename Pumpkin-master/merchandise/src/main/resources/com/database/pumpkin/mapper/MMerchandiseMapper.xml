@@ -26,6 +26,12 @@
         where m_name = #{mName} and m_bn = #{mBn}
     </update>
 
-
+    <update id="updateByNameAndmBn">
+        update m_merchandise
+        <set>
+            m_isvaild =#{mIsvaild},m_name = #{mName},m_sort=#{mSort},m_price=#{mPrice},m_color=#{mColor},url=#{url},m_size=#{mSize},update_time=#{updateTime},update_by=#{updateBy}
+        </set>
+        where m_name = #{mName} and m_bn = #{mBn}
+    </update>
 
 </mapper>

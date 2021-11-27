@@ -30,7 +30,7 @@ public class PCustomer implements Serializable {
 
     private Date birthday;
 
-    private Integer userId;
+    private Integer userid;
 
     private String country;
 

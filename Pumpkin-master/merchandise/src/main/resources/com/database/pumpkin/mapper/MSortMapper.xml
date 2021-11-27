@@ -8,7 +8,7 @@
         <result property="isparent" column="isparent" jdbcType="INTEGER"/>
         <result property="parentid" column="parentid" jdbcType="INTEGER"/>
         <result property="sortBn" column="sort_bn" jdbcType="VARCHAR"/>
-        <result property="isvalid" column="isvalid" jdbcType="INTEGER"/>
+        <result property="isvaild" column="isvaild" jdbcType="INTEGER"/>
         <result property="url" column="url" jdbcType="VARCHAR"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
         <result property="createBy" column="create_by" jdbcType="VARCHAR"/>

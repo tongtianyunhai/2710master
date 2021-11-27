@@ -3,8 +3,12 @@ package com.database.pumpkin.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.database.pumpkin.domain.entity.PStaff;
 import com.database.pumpkin.mapper.PStaffMapper;
+import com.database.pumpkin.service.Base.BaseService;
+import com.database.pumpkin.service.Base.impl.BaseServiceImpl;
 import com.database.pumpkin.service.IPStaffService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -16,6 +20,8 @@ import org.springframework.stereotype.Service;
  * @since 2021-10-11
  */
 @Service
-public class PStaffServiceImpl extends ServiceImpl<PStaffMapper, PStaff> implements IPStaffService {
+@Transactional
+@RequiredArgsConstructor
+public class PStaffServiceImpl extends BaseServiceImpl<PStaff> implements IPStaffService {
 
 }

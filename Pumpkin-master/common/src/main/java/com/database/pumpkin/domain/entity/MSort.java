@@ -33,7 +33,7 @@ public class MSort implements Serializable {
 
     private String sortBn;
 
-    private Integer isvalid;
+    private Integer isvaild;
 
     private String url;
 

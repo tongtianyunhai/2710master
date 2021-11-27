@@ -69,5 +69,10 @@ public class MMerchandiseServiceImpl extends BaseServiceImpl<MMerchandise> imple
         return mMerchandiseMapper.deleteByNameAndmBn(mMerchandiseVo);
     }
 
+    @Override
+    public Integer updateByNameAndmBn(MMerchandise mMerchandise) {
+        return mMerchandiseMapper.updateByNameAndmBn(mMerchandise);
+    }
+
 
 }

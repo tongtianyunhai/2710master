@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.database.pumpkin.mapper.PCustomerMapper">
-    <resultMap id="BaseResultMap" type="com.database.pumpkin.domain.entity.PCustomer">
-        <result property="cid" column="cid" jdbcType="INTEGER"/>
-        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
-        <result property="username" column="username" jdbcType="VARCHAR"/>
-        <result property="birthday" column="birthday" jdbcType="TIMESTAMP"/>
-        <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
-        <result property="country" column="country" jdbcType="VARCHAR"/>
-        <result property="balance" column="balance" jdbcType="DOUBLE"/>
-        <result property="city" column="city" jdbcType="VARCHAR"/>
-        <result property="zipcode" column="zipcode" jdbcType="INTEGER"/>
-        <result property="state" column="state" jdbcType="VARCHAR"/>
-        <result property="street" column="street" jdbcType="VARCHAR"/>
-    </resultMap>
-
 
 
 
@@ -24,8 +10,6 @@
         <set>
             p1.userName=#{userName},p1.email=#{email},p1.nick_name=#{nickName},p2.birthday=#{birthday},p2.country=#{country},p2.balance=#{balance},p2.city=#{city},p2.zipcode=#{zipcode},p2.street=#{street},p2.state=#{state},p2.url=#{url},p2.gender=#{gender}
         </set>
-        <where>
-            uid = #{uid} and userid=uid
-        </where>
+        where uid = #{uid} and p1.uid=p2.userId
   </update>
 </mapper>

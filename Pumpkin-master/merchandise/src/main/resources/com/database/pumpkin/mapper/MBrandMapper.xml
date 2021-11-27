@@ -21,7 +21,7 @@
 
 
     <select id="selectByParams" resultType="com.database.pumpkin.domain.entity.MSort">
-        select sid,sort_name,sort_bn,url,parentid,isvalid
+        select sid,sort_name,sort_bn,url,parentid,isvaild
         from
         m_sort
         <where>
@@ -34,7 +34,7 @@
     </select>
 
     <select id="queryById" resultType="com.database.pumpkin.domain.entity.MSort">
-        select sid,sort_name,sort_bn,url,parentid,isvalid
+        select sid,sort_name,sort_bn,url,parentid,isvaild
         from
         m_sort
         <where>
@@ -55,7 +55,7 @@
     <update id="deleteById">
         update m_sort
         <set>
-               isvalid =0,
+               isvaild =0,
         </set>
         where sid = #{sid}
     </update>

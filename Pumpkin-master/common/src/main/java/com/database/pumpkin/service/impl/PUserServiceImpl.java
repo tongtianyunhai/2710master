@@ -33,4 +33,6 @@ public class PUserServiceImpl extends BaseServiceImpl<PUser> implements IPUserSe
     public PCustomerVo selectUserByUid(Integer uid) {
         return pUserMapper.selectUserByUid(uid);
     }
+
+
 }

@@ -25,9 +25,10 @@
 
 
     <select id="selectUserByUid" resultType="com.database.pumpkin.domain.vo.PCustomerVo">
-   select p1.userName,p1.email,p1.star,p1.nick_name,p2.birthday,p2.country,p2.balance,p2.city,p2.zipcode,p2.street,p2.state,p2.url,p2.gender from p_user p1,p_customer p2 where uid = #{uid} and
+   select p1.userName,p1.uid,p1.email,p1.star,p1.nick_name,p2.birthday,p2.country,p2.balance,p2.city,p2.zipcode,p2.street,p2.state,p2.url,p2.gender,p1.isvaild,p1.passWord from p_user p1,p_customer p2 where uid = #{uid} and
     p2.userId=p1.uid
   </select>
+
 
 
 </mapper>

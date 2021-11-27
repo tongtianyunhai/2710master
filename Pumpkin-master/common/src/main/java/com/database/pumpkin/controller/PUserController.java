@@ -33,6 +33,7 @@ public class PUserController extends BaseController {
     @Autowired
     private IPUserService puserService;
 
+
     @ApiOperation(value = "查询登录用户", notes = "验证用户登录密码")
     @PostMapping  ("selectUserByName")
     public AxiosResult<PUser> login(@RequestBody PUser puser) {
@@ -58,5 +59,10 @@ public class PUserController extends BaseController {
         list.add(pCustomerVo);
         return AxiosResult.success(list);
     }
-
+    @ApiOperation(value = "updateUser", notes = "updateUser")
+    @PutMapping("update")
+    public AxiosResult<Integer> update(@RequestBody PUser pUser){
+        int update = puserService.updateById(pUser);
+        return toAxiosResult(update);
+    }
 }

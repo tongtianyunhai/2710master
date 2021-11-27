@@ -1,6 +1,7 @@
 package com.database.pumpkin.mapper;
 
 import com.database.pumpkin.domain.entity.PCustomer;
+import com.database.pumpkin.domain.vo.PCustomerVo;
 import com.database.pumpkin.mapper.base.MyMapper;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PCustomerMapper extends MyMapper<PCustomer> {
-
+Integer updateUserByUid(PCustomerVo pCustomerVo);
 
 }

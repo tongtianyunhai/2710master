@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -39,6 +40,12 @@ public class PStaff implements Serializable {
     private Integer zipcode;
 
     private Integer job;
+
+    private String email;
+
+    private String createBy;
+
+    private Date createTime;
 
 
 }

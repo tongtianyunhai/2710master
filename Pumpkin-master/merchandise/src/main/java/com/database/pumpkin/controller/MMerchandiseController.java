@@ -5,6 +5,7 @@ import com.database.pumpkin.common.http.AxiosResult;
 import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.controller.base.BaseController;
 import com.database.pumpkin.domain.criteria.MMerchandiseCriteria;
+import com.database.pumpkin.domain.entity.MMerchandise;
 import com.database.pumpkin.domain.vo.MMerchandiseVo;
 import com.database.pumpkin.service.IMMerchandiseService;
 import io.swagger.annotations.Api;
@@ -42,5 +43,16 @@ public class MMerchandiseController extends BaseController {
         return AxiosResult.success(integer);
     }
 
-
+    @ApiOperation(value = "addNewMerchandise", notes = "addNewMerchandise")
+    @PostMapping("save")
+    public AxiosResult<Integer> save(@RequestBody MMerchandise mMerchandise){
+        int save = imMerchandiseService.save(mMerchandise);
+        return toAxiosResult(save);
+    }
+    @PutMapping("update")
+    @ApiOperation(value = "updateBrand",notes="update")
+    public AxiosResult<Integer> update(@RequestBody MMerchandise mMerchandise){
+        int update = this.imMerchandiseService.updateByNameAndmBn(mMerchandise);
+        return toAxiosResult(update);
+    }
 }

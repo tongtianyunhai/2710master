@@ -2,6 +2,8 @@ package com.database.pumpkin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.database.pumpkin.domain.entity.PStaff;
+import com.database.pumpkin.mapper.base.MyMapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -11,6 +13,7 @@ import com.database.pumpkin.domain.entity.PStaff;
  * @author whl
  * @since 2021-10-11
  */
-public interface PStaffMapper extends BaseMapper<PStaff> {
+@Repository
+public interface PStaffMapper extends MyMapper<PStaff> {
 
 }

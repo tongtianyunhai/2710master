@@ -6,6 +6,7 @@ import com.database.pumpkin.common.http.AxiosResult;
 
 import com.database.pumpkin.controller.base.BaseController;
 import com.database.pumpkin.domain.entity.PCustomer;
+import com.database.pumpkin.domain.vo.PCustomerVo;
 import com.database.pumpkin.service.IPCustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,12 +34,12 @@ public class PCustomerController extends BaseController {
 
     @ApiOperation(value = "updateCustomer", notes = "updateCustomer")
     @PutMapping("update")
-    public AxiosResult<Integer> update(@RequestBody PCustomer pCustomer){
-        int update = ipCustomerService.updateById(pCustomer);
+    public AxiosResult<Integer> update(@RequestBody PCustomerVo pCustomerVo){
+        int update = ipCustomerService.updateUserByUid(pCustomerVo);
         return toAxiosResult(update);
     }
-    @GetMapping("sortList")
-    @ApiOperation(value = "searchMerchandiseSort",notes="searchAll")
+    @GetMapping("List")
+    @ApiOperation(value = "searchCustomerInfo",notes="searchAll")
     public AxiosResult<List<PCustomer>> findAll(){
         List<PCustomer> list=ipCustomerService.list();
         return AxiosResult.success(list);
