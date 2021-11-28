@@ -20,7 +20,9 @@ public class SSales implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer merchandiseId;
+    private String mName;
+
+    private String mBn;
 
     private Double price;
 
@@ -31,10 +33,6 @@ public class SSales implements Serializable {
     private String createBy;
 
     private LocalDateTime createTime;
-
-    private String preOne;
-
-    private String preTwo;
 
     private String updateBy;
 

@@ -12,7 +12,7 @@
         </set>
 
         <where>
-            merchandise_id=#{merchandiseId}
+            m_name=#{mName} and m_bn=#{mBn}
         </where>
     </select>
 
@@ -20,7 +20,16 @@
         select *
         from s_sales
         <where>
-            merchandise_id=#{merchandiseId}
+            m_name=#{mName} and m_bn=#{mBn}
+        </where>
+    </select>
+
+
+
+    <select id="selectByParams" resultType="com.database.pumpkin.domain.entity.SSales">
+        select * from s_sales
+        <where>
+            m_name=#{mName} and m_bn=#{mBn}
         </where>
     </select>
 </mapper>

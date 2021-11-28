@@ -2,7 +2,9 @@ package com.database.pumpkin.controller;
 
 
 import com.database.pumpkin.common.http.AxiosResult;
+import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.controller.base.BaseController;
+import com.database.pumpkin.domain.Criteria.SalesCriteria;
 import com.database.pumpkin.domain.entity.SCart;
 import com.database.pumpkin.domain.entity.SSales;
 import com.database.pumpkin.service.ISCartService;
@@ -10,10 +12,7 @@ import com.database.pumpkin.service.ISSalesService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -43,9 +42,9 @@ public class SSalesController extends BaseController {
     }
 
     @ApiOperation(value = "searchSaleInformationById", notes = "searchSaleInformationById")
-    @PostMapping("search_sales_info")
-    public AxiosResult<SSales> searchSaleInformationById(@RequestBody SSales sSales){
-        sSales = isss.findByDetailById(sSales.getMerchandiseId());
-        return AxiosResult.success(sSales);
+    @GetMapping("search_sales_info")
+    public AxiosResult<PageResult<SSales>> searchSaleInformationById(SalesCriteria salesCriteria){
+        PageResult<SSales> sales= isss.searchPageByCriteria(salesCriteria);
+        return AxiosResult.success(sales);
     }
 }

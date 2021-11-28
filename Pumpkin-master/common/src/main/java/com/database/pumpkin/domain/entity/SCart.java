@@ -22,10 +22,6 @@ public class SCart implements Serializable {
 
     private Integer customerId;
 
-    private LocalDateTime datetime;
-
-    private Integer merchandiseId;
-
     private Integer quantity;
 
     private Double currentPrice;
@@ -34,27 +30,13 @@ public class SCart implements Serializable {
 
     private LocalDateTime createTime;
 
-    private String preOne;
+    private String mName;
 
-    private String preTwo;
+    private String mBn;
 
     private String updateBy;
 
     private LocalDateTime updateTime;
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public LocalDateTime getDatetime() {
-        return datetime;
-    }
-
-    public void setDatetime(LocalDateTime datetime) {
-        this.datetime = datetime;
-    }
 }

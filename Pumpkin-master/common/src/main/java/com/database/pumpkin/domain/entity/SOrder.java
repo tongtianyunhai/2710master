@@ -25,8 +25,6 @@ public class SOrder implements Serializable {
     @TableId(value = "order_id", type = IdType.AUTO)
     private Integer orderId;
 
-    private Integer merchandiseId;
-
     private Integer customerId;
 
     private LocalDateTime datetime;
@@ -43,9 +41,9 @@ public class SOrder implements Serializable {
 
     private LocalDateTime createTime;
 
-    private String preOne;
+    private String mName;
 
-    private String preTwo;
+    private String mBn;
 
     private String updateBy;
 
