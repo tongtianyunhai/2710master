@@ -11,6 +11,7 @@ import com.database.pumpkin.service.IPUserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
@@ -38,7 +39,8 @@ public class PUserController extends BaseController {
     @PostMapping  ("selectUserByName")
     public AxiosResult<PUser> login(@RequestBody PUser puser) {
         PUser res = puserService.findUser(puser.getUserName());
-        if (res.getPassWord().equals(puser.getPassWord())&&res.getIsvaild()!=0) {
+        String md5PassWord=DigestUtils.md5DigestAsHex(puser.getPassWord().getBytes());
+        if (res.getPassWord().equals(md5PassWord)&&res.getIsvaild()!=0) {
             return AxiosResult.success(res);
         }
         return AxiosResult.error();
@@ -47,6 +49,8 @@ public class PUserController extends BaseController {
     @ApiOperation(value = "CreateNewAccount", notes = "CreateNewAccount")
     @PostMapping  ("save")
     public AxiosResult<Integer> save(@RequestBody PUser puser) {
+        String md5PassWord=DigestUtils.md5DigestAsHex(puser.getPassWord().getBytes());
+        puser.setPassWord(md5PassWord);
         int save = puserService.save(puser);
         return toAxiosResult(save);
     }

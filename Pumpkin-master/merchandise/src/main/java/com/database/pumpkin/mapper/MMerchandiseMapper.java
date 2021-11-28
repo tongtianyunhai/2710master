@@ -22,7 +22,7 @@ import java.util.List;
 public interface MMerchandiseMapper extends MyMapper<MMerchandise> {
     List<MMerchandiseVo> selectByParams(MMerchandiseCriteria mMerchandiseCriteria);
     Integer deleteByNameAndmBn(MMerchandiseVo mMerchandiseVo);
-    Integer updateByNameAndmBn(MMerchandise mMerchandise);
+    Integer updateByNameAndmBn(MMerchandiseVo mMerchandiseVo);
 
 
 }

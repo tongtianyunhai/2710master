@@ -19,6 +19,6 @@ import com.database.pumpkin.service.Base.BaseService;
 public interface IMMerchandiseService extends BaseService<MMerchandise> {
     PageResult<MMerchandiseVo> searchPageByCriteria(MMerchandiseCriteria mMerchandiseCriteria);
     Integer deleteByNameAndmBn(MMerchandiseVo mMerchandiseVo);
-    Integer updateByNameAndmBn(MMerchandise mMerchandise);
+    Integer updateByNameAndmBn(MMerchandiseVo mMerchandiseVo);
 
 }
