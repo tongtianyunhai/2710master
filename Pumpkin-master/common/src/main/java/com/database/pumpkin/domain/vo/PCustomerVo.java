@@ -22,8 +22,8 @@ import java.util.Date;
 public class PCustomerVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "uid", type = IdType.AUTO)
-    private Integer uid;
+
+    private String uid;
 
     private String userName;
 
@@ -61,7 +61,7 @@ public class PCustomerVo implements Serializable {
 
     private Date birthday;
 
-    private Integer userId;
+    private String userid;
 
     private String country;
 

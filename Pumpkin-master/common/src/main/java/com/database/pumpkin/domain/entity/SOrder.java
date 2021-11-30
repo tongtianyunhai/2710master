@@ -37,10 +37,6 @@ public class SOrder implements Serializable {
 
     private String remark;
 
-    private String createBy;
-
-    private LocalDateTime createTime;
-
     private String mName;
 
     private String mBn;

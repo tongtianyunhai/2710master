@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.Cookie;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -49,15 +50,21 @@ public class PUserController extends BaseController {
     @ApiOperation(value = "CreateNewAccount", notes = "CreateNewAccount")
     @PostMapping  ("save")
     public AxiosResult<Integer> save(@RequestBody PUser puser) {
+        PUser res = puserService.findUser(puser.getUserName());
+        if(res!=null){
+          return AxiosResult.error();
+        };
         String md5PassWord=DigestUtils.md5DigestAsHex(puser.getPassWord().getBytes());
+        String uuid=UUID.randomUUID().toString();
         puser.setPassWord(md5PassWord);
+        puser.setUid(uuid);
         int save = puserService.save(puser);
         return toAxiosResult(save);
     }
 
     @GetMapping("searchCustomerById/{uid}")
     @ApiOperation(value = "searchById",notes="searchCustomerById")
-    public AxiosResult<List<PCustomerVo>> searchPageByCriteria(@PathVariable Integer uid){
+    public AxiosResult<List<PCustomerVo>> searchPageByCriteria(@PathVariable String uid){
         PCustomerVo pCustomerVo=puserService.selectUserByUid(uid);
         List<PCustomerVo>list= new ArrayList<>();
         list.add(pCustomerVo);
@@ -68,5 +75,12 @@ public class PUserController extends BaseController {
     public AxiosResult<Integer> update(@RequestBody PUser pUser){
         int update = puserService.updateById(pUser);
         return toAxiosResult(update);
+    }
+
+    @ApiOperation(value = "查询用户id", notes = "查询用户id")
+    @GetMapping   ("selectUid")
+    public AxiosResult<PUser> search(PUser pUser) {
+        PUser res = puserService.findUser(pUser.getUserName());
+            return AxiosResult.success(res);
     }
 }

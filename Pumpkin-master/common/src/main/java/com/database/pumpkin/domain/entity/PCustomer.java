@@ -23,14 +23,14 @@ public class PCustomer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "cid", type = IdType.AUTO)
-    private Integer cid;
+
+    private String cid;
 
     private Integer roleId;
 
     private Date birthday;
 
-    private Integer userid;
+    private String userid;
 
     private String country;
 

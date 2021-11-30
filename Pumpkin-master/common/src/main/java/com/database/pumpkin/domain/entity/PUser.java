@@ -24,8 +24,8 @@ public class PUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "uid", type = IdType.AUTO)
-    private Integer uid;
+
+    private String uid;
 
     @TableField("userName")
     private String userName;

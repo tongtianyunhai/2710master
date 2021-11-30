@@ -30,7 +30,7 @@ public class PUserServiceImpl extends BaseServiceImpl<PUser> implements IPUserSe
     }
 
     @Override
-    public PCustomerVo selectUserByUid(Integer uid) {
+    public PCustomerVo selectUserByUid(String uid) {
         return pUserMapper.selectUserByUid(uid);
     }
 

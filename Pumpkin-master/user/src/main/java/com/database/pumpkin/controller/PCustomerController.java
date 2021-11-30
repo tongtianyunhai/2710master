@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -44,6 +45,13 @@ public class PCustomerController extends BaseController {
         List<PCustomer> list=ipCustomerService.list();
         return AxiosResult.success(list);
     }
-
+    @ApiOperation(value = "addNewCustomerInfo", notes = "addNewCustomerInfo")
+    @PostMapping("save")
+    public AxiosResult<Integer> save(@RequestBody PCustomer pCustomer){
+        String uuid=UUID.randomUUID().toString();
+        pCustomer.setCid(uuid);
+        int save = ipCustomerService.save(pCustomer);
+        return toAxiosResult(save);
+    }
 
 }
