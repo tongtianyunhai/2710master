@@ -27,7 +27,7 @@ import java.util.UUID;
  * @author gly
  * @since 2021-10-11
  */
-@Api(value = "adminController", description = "用户管理")
+@Api(value = "adminController", description = "userManagement")
 @RequestMapping("puser")
 @RestController
 public class PUserController extends BaseController {

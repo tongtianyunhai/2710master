@@ -2,4 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.database.pumpkin.mapper.PStaffMapper">
 
+
+    <select id="selectUserByName" resultType="com.database.pumpkin.domain.entity.PStaff">
+    select * from p_staff where username = #{userName}
+  </select>
 </mapper>

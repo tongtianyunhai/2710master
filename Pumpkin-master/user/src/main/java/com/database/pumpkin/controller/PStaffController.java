@@ -6,10 +6,12 @@ import com.database.pumpkin.domain.entity.PStaff;
 import com.database.pumpkin.service.IPStaffService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <p>
@@ -44,8 +46,13 @@ public class PStaffController extends BaseController {
     @ApiOperation(value = "CreateNewStaff", notes = "CreateNewStaff")
     @PostMapping  ("save")
     public AxiosResult<Integer> save(@RequestBody PStaff pStaff) {
+        PStaff res = ipStaffService.findUser(pStaff.getUsername());
+        if(res!=null){
+            return AxiosResult.error();
+        };
         int save = ipStaffService.save(pStaff);
         return toAxiosResult(save);
+
     }
     @ApiOperation(value = "updateStaffInfo", notes = "updateStaffInfo")
     @PutMapping("update")
@@ -58,5 +65,16 @@ public class PStaffController extends BaseController {
     public  AxiosResult<Integer> update(@PathVariable Long sid){
         int delete = ipStaffService.deleteById(sid);
         return toAxiosResult(delete);
+    }
+
+    @ApiOperation(value = "searchLoginManager", notes = "searchLoginManager")
+    @PostMapping  ("selectUserByName")
+    public AxiosResult<PStaff> login(@RequestBody PStaff pStaff) {
+        PStaff res = ipStaffService.findUser(pStaff.getUsername());
+        String md5PassWord=DigestUtils.md5DigestAsHex(pStaff.getPassword().getBytes());
+        if (res.getPassword().equals(md5PassWord)&&res.getIsvaild()!=0) {
+            return AxiosResult.success(res);
+        }
+        return AxiosResult.error();
     }
 }

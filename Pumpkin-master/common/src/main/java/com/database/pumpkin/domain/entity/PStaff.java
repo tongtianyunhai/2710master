@@ -47,5 +47,9 @@ public class PStaff implements Serializable {
 
     private Date createTime;
 
+    private String username;
 
+    private String password;
+
+    private Integer isvaild;
 }

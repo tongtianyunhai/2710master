@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.database.pumpkin.mapper.RankMapper">
+
+
+    <select id="RankByTopOne" resultType="com.database.pumpkin.domain.vo.RankInfoVo">
+        select count(s.m_name) as number,sum(s.price) as sumprice ,s.m_name,m.m_sort,ms.sort_name as brandName,ms2.sort_name as sortName
+        from s_order as s,m_merchandise as m,m_sort as ms,m_sort as ms2
+        <where>
+         m.m_name=s.m_name and m.m_sort=ms.sid and ms.parentid=ms2.isparent and s.datetime >=#{startTime} and s.datetime &lt;=#{endTime}
+        </where>
+        group by s.m_name order by count(s.m_name) desc limit 0,1
+  </select>
+
+    <select id="TheAmount" resultType="com.database.pumpkin.domain.vo.RankInfoVo">
+        select sum(price) as sumprice from s_order
+        <where>
+         datetime >=#{startTime}and datetime &lt;=#{endTime}
+        </where>
+    </select>
+
+    <select id="TopTen" resultType="com.database.pumpkin.domain.vo.RankInfoVo">
+        select count(s.m_name)as number,s.m_name ,sum(s.price) as sumprice from s_order as s
+        <where>
+        s.datetime  >=#{startTime} and s.datetime &lt;=#{endTime}
+        </where>
+        group by s.m_name order by count(s.m_name) desc limit 0,10
+    </select>
+
+</mapper>

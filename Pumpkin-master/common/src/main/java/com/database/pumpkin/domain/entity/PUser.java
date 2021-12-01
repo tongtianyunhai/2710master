@@ -58,5 +58,5 @@ public class PUser implements Serializable {
 
     private String nickName;
 
-
+    private Integer roleid;
 }

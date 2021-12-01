@@ -26,8 +26,6 @@ public class PCustomer implements Serializable {
 
     private String cid;
 
-    private Integer roleId;
-
     private Date birthday;
 
     private String userid;

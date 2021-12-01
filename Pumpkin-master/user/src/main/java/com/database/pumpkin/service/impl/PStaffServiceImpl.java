@@ -23,5 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class PStaffServiceImpl extends BaseServiceImpl<PStaff> implements IPStaffService {
-
+    private final PStaffMapper pUserMapper;
+    @Override
+    public PStaff findUser(String userName) {
+        return pUserMapper.selectUserByName(userName);
+    }
 }

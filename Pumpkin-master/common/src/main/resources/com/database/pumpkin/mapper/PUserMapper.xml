@@ -17,6 +17,8 @@
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="userId" column="userId" jdbcType="VARCHAR"/>
         <result property="star" column="star" jdbcType="INTEGER"/>
+        <result property="roleid" column="roleid" jdbcType="INTEGER"/>
+
     </resultMap>
 
     <select id="selectUserByName" resultType="com.database.pumpkin.domain.entity.PUser">
