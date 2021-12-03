@@ -4,6 +4,7 @@ package com.database.pumpkin.controller;
 import com.database.pumpkin.common.http.AxiosResult;
 
 
+import com.database.pumpkin.common.picture.UpPhotoNameUtils;
 import com.database.pumpkin.controller.base.BaseController;
 import com.database.pumpkin.domain.entity.PCustomer;
 import com.database.pumpkin.domain.vo.PCustomerVo;
@@ -13,7 +14,13 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,5 +63,31 @@ public class PCustomerController extends BaseController {
         int save = ipCustomerService.save(pCustomer);
         return toAxiosResult(save);
     }
+
+    @PostMapping("/upload")
+    public  AxiosResult<Integer> singleFileUpload(@RequestParam("file") MultipartFile file, String uid) {
+        //@RequestParam("file") MultipartFile file为接收图片参数
+        //Long userId,String status 用户Id和状态
+        try {
+            byte[] bytes = file.getBytes();
+            String imageFileName = file.getOriginalFilename();
+            String fileName = UpPhotoNameUtils.getPhotoName("img",imageFileName);
+            Path path = Paths.get("E:\\2710vue\\2710\\Pumpkin\\src\\assets\\images\\" + fileName);
+            //E:\2710vue\2710\Pumpkin\src\assets\images\”为本地目录
+            Files.write(path, bytes);//写入文件
+            String avatar_url=fileName;
+            PCustomerVo pCustomerVo=new PCustomerVo();
+            pCustomerVo.setUrl(avatar_url);
+            pCustomerVo.setUid(uid);
+            int update = ipCustomerService.updateUserByUid(pCustomerVo);
+//            System.out.println(fileName+"\n");
+            return toAxiosResult(update);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return AxiosResult.error();
+    }
+
+
 
 }
