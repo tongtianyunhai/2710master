@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.domain.Criteria.SOrderCriteria;
 import com.database.pumpkin.domain.entity.SOrder;
+import com.database.pumpkin.domain.vo.PriceVo;
 import com.database.pumpkin.mapper.SOrderMapper;
 import com.database.pumpkin.service.Base.BaseService;
 import com.database.pumpkin.service.ISOrderService;
@@ -69,5 +70,12 @@ public class SOrderServiceImpl extends BaseServiceImpl<SOrder> implements ISOrde
     public SOrder selectByOrderId(Integer orderId) {
         SOrder order=som.selectByOrderId(orderId);
         return order;
+    }
+    @Override
+    public Double getCurrentPrice(SOrder sOrder){
+        Double price;
+        PriceVo temp=som.getPrice(sOrder);
+        price=temp.getMPrice()* temp.getDiscount();
+        return price;
     }
 }
