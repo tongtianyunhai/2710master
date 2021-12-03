@@ -2,15 +2,16 @@ package com.database.pumpkin.controller;
 
 
 import com.database.pumpkin.common.http.AxiosResult;
+import com.database.pumpkin.common.page.PageResult;
 import com.database.pumpkin.controller.base.BaseController;
+import com.database.pumpkin.domain.Criteria.CartCriteria;
+import com.database.pumpkin.domain.Criteria.SalesCriteria;
+import com.database.pumpkin.domain.entity.SSales;
 import com.database.pumpkin.service.ISCartService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.database.pumpkin.domain.entity.SCart;
 
 import java.util.ArrayList;
@@ -43,9 +44,24 @@ public class SCartController  extends BaseController {
         iscs.deleteByKey(sCart);
     }
 
+    @ApiOperation(value = "removemultiFromCart", notes = "removemultiFromCart")
+    @PostMapping("remove_batch_from_Cart")
+    public void removemultiFromCart(@RequestBody List<SCart> sCarts){
+        for(SCart sCart:sCarts){
+            iscs.deleteByKey(sCart);}
+
+    }
+
     @ApiOperation(value = "updateCart", notes = "updateCart")
     @PostMapping("updateCart")
     public void updateCart(@RequestBody SCart sCart){
         iscs.updateCart(sCart);
+    }
+
+    @ApiOperation(value = "searchCartById", notes = "searchCartById")
+    @GetMapping("select_cart_info")
+    public AxiosResult<PageResult<SCart>> searchCartById(CartCriteria cartCriteria){
+        PageResult<SCart> sCarts= iscs.searchPageByCriteria(cartCriteria);
+        return AxiosResult.success(sCarts);
     }
 }

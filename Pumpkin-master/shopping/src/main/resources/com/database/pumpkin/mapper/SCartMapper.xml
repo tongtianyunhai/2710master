@@ -4,7 +4,7 @@
     <select id="deleteByKey" resultType="com.database.pumpkin.domain.entity.SCart">
         Delete  from s_cart
         <where>
-            customer_id = #{customerId} and m_name=#{mName} and m_bn=#{mBn}
+            customer_id = #{customerId} and m_name=#{mName} and m_bn=#{mBn} and create_time=#{createTime}
         </where>
     </select>
 
@@ -13,6 +13,13 @@
             set quantity=${quantity}
         <where>
             customer_id = #{customerId}  and m_name=#{mName} and m_bn=#{mBn}
+        </where>
+    </select>
+
+    <select id="selectByParams" resultType="com.database.pumpkin.domain.entity.SCart">
+        select * from s_cart
+        <where>
+            customer_id=#{customerId}
         </where>
     </select>
 </mapper>

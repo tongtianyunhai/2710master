@@ -28,7 +28,19 @@ public class SorderController extends BaseController {
         int save = isos.save(sOrder);
         return toAxiosResult(save);
     }
+    @ApiOperation(value = "addMultipuleOrders", notes = "addMultipuleOrders")
+    @PostMapping("batch_place_order")
+    public AxiosResult<Integer> addMultipuleOrders(@RequestBody List<SOrder> sOrders){
+        Integer save =0;
+        String time=String.valueOf(System.currentTimeMillis());
 
+        for(SOrder sOrder:sOrders){
+            SOrder temp=sOrder;
+            temp.setOrderId(time);
+              save += isos.save(temp);}
+
+        return toAxiosResult(save);
+    }
 
     @GetMapping("getOrderList")
     @ApiOperation(value = "getOrderList",notes="getPersonalOrderList")
