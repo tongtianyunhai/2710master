@@ -39,7 +39,7 @@ public class PUserController extends BaseController {
     @ApiOperation(value = "查询登录用户", notes = "验证用户登录密码")
     @PostMapping  ("selectUserByName")
     public AxiosResult<PUser> login(@RequestBody PUser puser) {
-        PUser res = puserService.findUser(puser.getUserName());
+        PUser res = puserService.findUser(puser.getUid());
         String md5PassWord=DigestUtils.md5DigestAsHex(puser.getPassWord().getBytes());
         if (res.getPassWord().equals(md5PassWord)&&res.getIsvaild()!=0) {
             return AxiosResult.success(res);
@@ -50,14 +50,13 @@ public class PUserController extends BaseController {
     @ApiOperation(value = "CreateNewAccount", notes = "CreateNewAccount")
     @PostMapping  ("save")
     public AxiosResult<Integer> save(@RequestBody PUser puser) {
-        PUser res = puserService.findUser(puser.getUserName());
+        PUser res = puserService.findUser(puser.getUid());
         if(res!=null){
           return AxiosResult.error();
         };
         String md5PassWord=DigestUtils.md5DigestAsHex(puser.getPassWord().getBytes());
-        String uuid=UUID.randomUUID().toString();
+//        String uuid=UUID.randomUUID().toString();
         puser.setPassWord(md5PassWord);
-        puser.setUid(uuid);
         int save = puserService.save(puser);
         return toAxiosResult(save);
     }
@@ -70,17 +69,17 @@ public class PUserController extends BaseController {
         list.add(pCustomerVo);
         return AxiosResult.success(list);
     }
-    @ApiOperation(value = "updateUser", notes = "updateUser")
-    @PutMapping("update")
-    public AxiosResult<Integer> update(@RequestBody PUser pUser){
-        int update = puserService.updateById(pUser);
-        return toAxiosResult(update);
-    }
+//    @ApiOperation(value = "updateUser", notes = "updateUser")
+//    @PutMapping("update")
+//    public AxiosResult<Integer> update(@RequestBody PUser pUser){
+//        int update = puserService.updateById(pUser);
+//        return toAxiosResult(update);
+//    }
 
     @ApiOperation(value = "查询用户id", notes = "查询用户id")
     @GetMapping   ("selectUid")
     public AxiosResult<PUser> search(PUser pUser) {
-        PUser res = puserService.findUser(pUser.getUserName());
+        PUser res = puserService.findUser(pUser.getUid());
             return AxiosResult.success(res);
     }
 }

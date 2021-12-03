@@ -22,8 +22,8 @@ public class PStaff implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "sid", type = IdType.AUTO)
-    private Integer sid;
+    @TableId(value = "sid")
+    private String sid;
 
     private Integer roleId;
 
@@ -46,8 +46,6 @@ public class PStaff implements Serializable {
     private String createBy;
 
     private Date createTime;
-
-    private String username;
 
     private String password;
 

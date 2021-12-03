@@ -25,8 +25,6 @@ public class PCustomerVo implements Serializable {
 
     private String uid;
 
-    private String userName;
-
 
     private String passWord;
 
@@ -54,8 +52,6 @@ public class PCustomerVo implements Serializable {
     private String email;
 
     private String nickName;
-
-    private Integer cid;
 
     private Integer roleId;
 

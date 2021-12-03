@@ -16,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PStaffMapper extends MyMapper<PStaff> {
-    PStaff selectUserByName(@Param("userName") String userName);
+    PStaff selectUserByName(@Param("sid") String sid);
 }

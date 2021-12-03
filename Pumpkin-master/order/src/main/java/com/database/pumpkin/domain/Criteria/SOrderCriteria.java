@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class SOrderCriteria extends BaseQueryCriteria {
-    public Integer customerId;
+    public String customerId;
     public Integer orderId;
 }

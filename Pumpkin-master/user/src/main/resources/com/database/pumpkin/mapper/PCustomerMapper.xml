@@ -8,7 +8,7 @@
     <update id="updateUserByUid">
         update p_user p1,p_customer p2
         <set>
-            p1.userName=#{userName},p1.email=#{email},p1.nick_name=#{nickName},p2.birthday=#{birthday},p2.country=#{country},p2.balance=#{balance},p2.city=#{city},p2.zipcode=#{zipcode},p2.street=#{street},p2.state=#{state},p2.url=#{url},p2.gender=#{gender}
+            p1.passWord=#{passWord},p1.email=#{email},p1.nick_name=#{nickName},p2.birthday=#{birthday},p2.country=#{country},p2.balance=#{balance},p2.city=#{city},p2.zipcode=#{zipcode},p2.street=#{street},p2.state=#{state},p2.url=#{url},p2.gender=#{gender}
         </set>
         where uid = #{uid} and p1.uid=p2.userId
   </update>

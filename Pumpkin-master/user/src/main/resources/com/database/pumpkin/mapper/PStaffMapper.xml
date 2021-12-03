@@ -4,6 +4,6 @@
 
 
     <select id="selectUserByName" resultType="com.database.pumpkin.domain.entity.PStaff">
-    select * from p_staff where username = #{userName}
+    select * from p_staff where sid = #{sid}
   </select>
 </mapper>

@@ -11,6 +11,7 @@ import com.database.pumpkin.service.IPCustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +37,10 @@ public class PCustomerController extends BaseController {
     @ApiOperation(value = "updateCustomer", notes = "updateCustomer")
     @PutMapping("update")
     public AxiosResult<Integer> update(@RequestBody PCustomerVo pCustomerVo){
+        if(pCustomerVo.getPassWord()!=null){
+            String md5PassWord=DigestUtils.md5DigestAsHex(pCustomerVo.getPassWord().getBytes());
+            pCustomerVo.setPassWord(md5PassWord);
+        }
         int update = ipCustomerService.updateUserByUid(pCustomerVo);
         return toAxiosResult(update);
     }
@@ -48,8 +53,6 @@ public class PCustomerController extends BaseController {
     @ApiOperation(value = "addNewCustomerInfo", notes = "addNewCustomerInfo")
     @PostMapping("save")
     public AxiosResult<Integer> save(@RequestBody PCustomer pCustomer){
-        String uuid=UUID.randomUUID().toString();
-        pCustomer.setCid(uuid);
         int save = ipCustomerService.save(pCustomer);
         return toAxiosResult(save);
     }

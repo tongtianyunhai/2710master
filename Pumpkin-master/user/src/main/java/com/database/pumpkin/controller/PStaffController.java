@@ -29,7 +29,7 @@ public class PStaffController extends BaseController {
 
     @GetMapping("searchStaffById/{sid}")
     @ApiOperation(value = "searchById",notes="searchCustomerById")
-    public AxiosResult<List<PStaff>> searchPageByCriteria(@PathVariable Integer sid){
+    public AxiosResult<List<PStaff>> searchPageByCriteria(@PathVariable String sid){
         PStaff pStaff=ipStaffService.findById(sid);
         List<PStaff>list= new ArrayList<>();
         if(pStaff.getSid()!=null) {
@@ -46,23 +46,29 @@ public class PStaffController extends BaseController {
     @ApiOperation(value = "CreateNewStaff", notes = "CreateNewStaff")
     @PostMapping  ("save")
     public AxiosResult<Integer> save(@RequestBody PStaff pStaff) {
-        PStaff res = ipStaffService.findUser(pStaff.getUsername());
+        PStaff res = ipStaffService.findUser(pStaff.getSid());
         if(res!=null){
             return AxiosResult.error();
         };
+        String md5PassWord = DigestUtils.md5DigestAsHex(pStaff.getPassword().getBytes());
+        System.out.println(md5PassWord);
+        pStaff.setPassword(md5PassWord);
         int save = ipStaffService.save(pStaff);
         return toAxiosResult(save);
-
     }
     @ApiOperation(value = "updateStaffInfo", notes = "updateStaffInfo")
     @PutMapping("update")
     public AxiosResult<Integer> update(@RequestBody PStaff pStaff){
+        if(pStaff.getPassword()!=null) {
+            String md5PassWord = DigestUtils.md5DigestAsHex(pStaff.getPassword().getBytes());
+            pStaff.setPassword(md5PassWord);
+        }
         int update = ipStaffService.updateById(pStaff);
         return toAxiosResult(update);
     }
     @ApiOperation(value = "deleteStaffInfo", notes = "deleteStaffInfo")
     @DeleteMapping("delete/{sid}")
-    public  AxiosResult<Integer> update(@PathVariable Long sid){
+    public  AxiosResult<Integer> update(@PathVariable String sid){
         int delete = ipStaffService.deleteById(sid);
         return toAxiosResult(delete);
     }
@@ -70,7 +76,7 @@ public class PStaffController extends BaseController {
     @ApiOperation(value = "searchLoginManager", notes = "searchLoginManager")
     @PostMapping  ("selectUserByName")
     public AxiosResult<PStaff> login(@RequestBody PStaff pStaff) {
-        PStaff res = ipStaffService.findUser(pStaff.getUsername());
+        PStaff res = ipStaffService.findUser(pStaff.getSid());
         String md5PassWord=DigestUtils.md5DigestAsHex(pStaff.getPassword().getBytes());
         if (res.getPassword().equals(md5PassWord)&&res.getIsvaild()!=0) {
             return AxiosResult.success(res);

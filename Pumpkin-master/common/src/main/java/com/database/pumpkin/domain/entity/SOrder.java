@@ -25,7 +25,7 @@ public class SOrder implements Serializable {
     @TableId(value = "order_id", type = IdType.AUTO)
     private Integer orderId;
 
-    private Integer customerId;
+    private String customerId;
 
     private LocalDateTime datetime;
 

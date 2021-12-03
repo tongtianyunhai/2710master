@@ -25,8 +25,8 @@ public class PUserServiceImpl extends BaseServiceImpl<PUser> implements IPUserSe
 
     private final PUserMapper pUserMapper;
     @Override
-    public PUser findUser(String userName) {
-        return pUserMapper.selectUserByName(userName);
+    public PUser findUser(String uid) {
+        return pUserMapper.selectUserByName(uid);
     }
 
     @Override

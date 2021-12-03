@@ -14,5 +14,5 @@ import com.database.pumpkin.service.Base.BaseService;
  * @since 2021-10-11
  */
 public interface IPStaffService extends BaseService<PStaff> {
-    PStaff findUser(String userName);
+    PStaff findUser(String sid);
 }

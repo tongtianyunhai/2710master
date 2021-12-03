@@ -18,6 +18,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PUserMapper extends MyMapper<PUser> {
-    PUser selectUserByName(@Param("userName") String userName);
+    PUser selectUserByName(@Param("uid") String uid);
     PCustomerVo selectUserByUid(@Param("uid") String uid);
 }

@@ -24,12 +24,8 @@ public class PUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
+    @TableField("uid")
     private String uid;
-
-    @TableField("userName")
-    private String userName;
-
     @TableField("passWord")
     private String passWord;
 
