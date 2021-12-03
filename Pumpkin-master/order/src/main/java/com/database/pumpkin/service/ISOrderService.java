@@ -19,4 +19,5 @@ import java.util.List;
 public interface ISOrderService extends BaseService<SOrder> {
     PageResult<SOrder> selectByCustomerId(SOrderCriteria sOrderCriteria);
     SOrder selectByOrderId(Integer orderId);
+    Double getCurrentPrice(SOrder sOrder);
 }

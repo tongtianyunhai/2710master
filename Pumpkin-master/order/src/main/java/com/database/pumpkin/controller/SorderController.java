@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,10 @@ public class SorderController extends BaseController {
     @ApiOperation(value = "addNewOrder", notes = "addNewOrder")
     @PostMapping("place_order")
     public AxiosResult<Integer> addNewOrder(@RequestBody SOrder sOrder){
+        sOrder.setPrice(isos.getCurrentPrice(sOrder));
+        String time=String.valueOf(System.currentTimeMillis());
+        sOrder.setOrderId(time);
+        sOrder.setDatetime(LocalDateTime.now());
         int save = isos.save(sOrder);
         return toAxiosResult(save);
     }

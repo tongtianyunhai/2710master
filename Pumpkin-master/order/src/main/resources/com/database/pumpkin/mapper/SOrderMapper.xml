@@ -18,4 +18,14 @@
             order_id = #{orderId}
         </where>
     </select>
+
+    <select id="getPrice" resultType="com.database.pumpkin.domain.vo.PriceVo">
+        select a.discount, b.m_price
+        from s_sales as a , m_merchandise as b
+        <where>
+            a.m_name=b.m_name and a.m_bn=b.m_bn and
+            a.m_name=#{mName} and a.m_bn=#{mBn}
+        </where>
+    </select>
+
 </mapper>
