@@ -22,8 +22,7 @@ public class SOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "order_id", type = IdType.AUTO)
-    private Integer orderId;
+    private String orderId;
 
     private String customerId;
 

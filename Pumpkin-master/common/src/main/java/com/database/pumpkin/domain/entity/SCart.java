@@ -20,7 +20,7 @@ public class SCart implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer customerId;
+    private String customerId;
 
     private Integer quantity;
 
