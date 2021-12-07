@@ -39,7 +39,7 @@ public class PStaff implements Serializable {
 
     private Integer zipcode;
 
-    private Integer job;
+    private String job;
 
     private String email;
 

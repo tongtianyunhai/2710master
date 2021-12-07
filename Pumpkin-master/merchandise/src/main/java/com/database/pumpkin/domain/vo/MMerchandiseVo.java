@@ -48,12 +48,13 @@ public class MMerchandiseVo implements Serializable {
 
     private String preTwo;
 
-    private String merichandisePicture;
+    private String merchandisePicture;
 
     private String sortPicture;
 
     private Integer amount;
 
-    private String url;
+    private String MerchandisePicture;
+
 
 }

@@ -49,4 +49,6 @@ public class MMerchandise implements Serializable {
     private String preTwo;
 
     private Long amount;
+
+    private String url;
 }

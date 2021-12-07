@@ -16,5 +16,6 @@ import com.database.pumpkin.service.Base.BaseService;
  */
 public interface IPCustomerService extends BaseService<PCustomer> {
     Integer updateUserByUid(PCustomerVo pCustomerVo);
+    Integer updateUserAvatarByUid(PCustomerVo pCustomerVo);
 
 }

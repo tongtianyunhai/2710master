@@ -16,5 +16,6 @@ import com.database.pumpkin.service.Base.BaseService;
 public interface IPUserService  extends BaseService<PUser> {
     PUser findUser(String uid);
     PCustomerVo selectUserByUid(String uid);
+    Integer updateUserVaild(PUser pUser);
 
 }

@@ -44,12 +44,18 @@ public class PCustomerController extends BaseController {
     @ApiOperation(value = "updateCustomer", notes = "updateCustomer")
     @PutMapping("update")
     public AxiosResult<Integer> update(@RequestBody PCustomerVo pCustomerVo){
-        if(pCustomerVo.getPassWord()!=null){
+        if(pCustomerVo.getPassWord().length()>20){
+            int update = ipCustomerService.updateUserByUid(pCustomerVo);
+            return toAxiosResult(update);
+        }
+        else if(pCustomerVo.getPassWord()!=null&&pCustomerVo.getPassWord().length()<20){
             String md5PassWord=DigestUtils.md5DigestAsHex(pCustomerVo.getPassWord().getBytes());
             pCustomerVo.setPassWord(md5PassWord);
+            int update = ipCustomerService.updateUserByUid(pCustomerVo);
+            return toAxiosResult(update);
+        }else{
+            return AxiosResult.error();
         }
-        int update = ipCustomerService.updateUserByUid(pCustomerVo);
-        return toAxiosResult(update);
     }
     @GetMapping("List")
     @ApiOperation(value = "searchCustomerInfo",notes="searchAll")
@@ -79,7 +85,7 @@ public class PCustomerController extends BaseController {
             PCustomerVo pCustomerVo=new PCustomerVo();
             pCustomerVo.setUrl(avatar_url);
             pCustomerVo.setUid(uid);
-            int update = ipCustomerService.updateUserByUid(pCustomerVo);
+            int update = ipCustomerService.updateUserAvatarByUid(pCustomerVo);
 //            System.out.println(fileName+"\n");
             return toAxiosResult(update);
         } catch (IOException e) {
@@ -87,7 +93,4 @@ public class PCustomerController extends BaseController {
         }
         return AxiosResult.error();
     }
-
-
-
 }

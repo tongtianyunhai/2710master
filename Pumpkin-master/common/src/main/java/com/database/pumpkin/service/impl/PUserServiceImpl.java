@@ -34,5 +34,10 @@ public class PUserServiceImpl extends BaseServiceImpl<PUser> implements IPUserSe
         return pUserMapper.selectUserByUid(uid);
     }
 
+    @Override
+    public Integer updateUserVaild(PUser pUser) {
+        return pUserMapper.updateUserVaild(pUser);
+    }
+
 
 }

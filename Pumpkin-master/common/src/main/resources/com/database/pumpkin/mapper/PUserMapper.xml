@@ -31,5 +31,12 @@
   </select>
 
 
+    <update id="updateUserVaild">
+        update p_user
+        <set>
+           isvaild=#{isvaild}
+        </set>
+        where uid = #{uid}
+    </update>
 
 </mapper>

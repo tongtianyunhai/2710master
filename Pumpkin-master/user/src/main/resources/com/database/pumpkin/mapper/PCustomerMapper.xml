@@ -12,4 +12,12 @@
         </set>
         where uid = #{uid} and p1.uid=p2.userId
   </update>
+
+    <update id="updateUserAvatarByUid">
+        update p_user p1,p_customer p2
+        <set>
+           p2.url=#{url}
+        </set>
+        where uid = #{uid} and p1.uid=p2.userId
+    </update>
 </mapper>

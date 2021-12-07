@@ -16,6 +16,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PCustomerMapper extends MyMapper<PCustomer> {
-Integer updateUserByUid(PCustomerVo pCustomerVo);
-
+    Integer updateUserByUid(PCustomerVo pCustomerVo);
+    Integer updateUserAvatarByUid(PCustomerVo pCustomerVo);
 }

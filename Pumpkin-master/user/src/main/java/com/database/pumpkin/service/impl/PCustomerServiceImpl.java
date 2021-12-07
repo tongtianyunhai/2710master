@@ -30,4 +30,9 @@ public class PCustomerServiceImpl extends BaseServiceImpl<PCustomer> implements 
     public Integer updateUserByUid(PCustomerVo pCustomerVo) {
         return pCustomerMapper.updateUserByUid(pCustomerVo);
     }
+
+    @Override
+    public Integer updateUserAvatarByUid(PCustomerVo pCustomerVo) {
+        return pCustomerMapper.updateUserAvatarByUid(pCustomerVo);
+    }
 }

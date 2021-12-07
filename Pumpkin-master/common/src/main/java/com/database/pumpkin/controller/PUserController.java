@@ -82,4 +82,12 @@ public class PUserController extends BaseController {
         PUser res = puserService.findUser(pUser.getUid());
             return AxiosResult.success(res);
     }
+
+
+    @ApiOperation(value = "updateUserValid", notes = "updateUserValid")
+    @PutMapping("updateUserValid")
+    public AxiosResult<Integer> update(@RequestBody PUser pUser){
+        int update = puserService.updateUserVaild(pUser);
+        return toAxiosResult(update);
+    }
 }

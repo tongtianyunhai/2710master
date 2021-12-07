@@ -26,9 +26,8 @@ public class PUser implements Serializable {
 
     @TableField("uid")
     private String uid;
-    @TableField("passWord")
+    @TableField(value="passWord")
     private String passWord;
-
 
     private Date loginTime;
 
